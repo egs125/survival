@@ -2,7 +2,23 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="AdminMapper">
+  <mapper namespace="userMapper">
+  	 <resultMap id="user" type="user">
+  		<id property="id" column="id" />
+		<result property="pw" column="pw" />
+		<result property="nm" column="nm" />
+		<result property="email" column="email" />
+  	</resultMap>
+  
+  	<!-- 유저 로그인 시 -->
+  	<!-- <select id="userLogin" parameterType="user" resultType="user">
+  		SELECT ID, 
+  		       NM,
+  		       EMAIL
+  		  FROM USER
+  		 WHERE ID = #{id}
+  		   AND PW = #{pw}
+  	</select> -->
   	<!-- <resultMap id="admin" type="admin">
   		<id property="id" column="id" />
 		<result property="pw" column="pw" />
@@ -15,30 +31,7 @@
 	   	 WHERE ID = #{id}
 	   	   AND PW = #{pw}
 	</select> -->
-	
-	
-  	<!-- <resultMap id="memberResult" type="aMember">
-		<id property="memberId" column="mb_id" />
-		<result property="memberPwd" column="mb_pwd" />
-		<result property="memberName" column="mb_name" />
-		<result property="memberEmail" column="mb_email" />
-		<result property="memberPhone" column="mb_phone" />
-		<result property="memberJoinDate" column="mb_joindate" />
-		<result property="memberOriginalPic" column="mb_original_pic" />
-		<result property="memberRenamePic" column="mb_rename_pic" />
-		<result property="memberBank" column="mb_bank" />
-		<result property="memberLocPhone" column="mb_loc_phone" />
-		<result property="memberAddress" column="mb_address" />
-		<result property="memberGrade" column="mb_grade" />
-	</resultMap>
-	
-	<resultMap id="memberUpdate" type="aMember">
-		<id property="memberId" column="mb_id" />
-		<result property="memberGrade" column="mb_grade" />
-	</resultMap> -->
-	
-
-	
+		
 	<!-- <delete id="deleteMember" parameterType="aMember">
 		DELETE FROM 
 		MEMBER WHERE MB_ID = #{memberId}
