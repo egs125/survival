@@ -13,24 +13,55 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	
+	<link rel="stylesheet" href="/survival/resources/css/spending/dailySpending.css">
+	<script type="text/javascript" src="/survival/resources/js/spending/dailySpending.js"></script>
+	
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	
 	<div id="body">
 		<div id="goal">
-		
-		</div>
+		<c:if test="${budget.dailyBudget eq null }">
+			<h2>아직 예산 설정을 하지 않으셨습니다.</h2>
+			<br>
+			<h4>일일 예산액을 설정하고 절약요정이 되어봅시다.</h4>
+			<br><br>
+			<div id="setAmount">
+				나의 일일 예산액은  <input type="number" id="dailyBudgetAmt" />
+				<br><br>
+				<button id="setBtn">Set!</button> 
+				<br><br>
+				<a href="#">★얼마로 해야할지 잘 모르시겠다면 클릭!</a>
+				<br>		
+			</div>	
+		</c:if>
+		<c:if test="${budget.dailyBudget ne null }">
+			<h2>오늘 예산  ${budget.dailyBudget} 중  원 사용 </h2>	
+			<button id="resetBtn">
+				<span class="glyphicon glyphicon-cog"></span> 일일 예산 재설정
+			</button>
+	
+  			<div id="changeAmt">
+				현재 예산액  <input type="text" id="curBudgetAmt" readonly />
+				<br>
+				수정 예산액  <input type="number" id="newBudgetAmt" />
+				<br><br>
+				<button id="saveBtn">Save</button> &nbsp;&nbsp; <button id="cancelBtn">Cancel</button>
+				<br>		
+			</div>				
+		</div> <!-- end of div goal -->
 		
 		<div id="spendingBar" class="progress">
-			<div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-		    	<span>45%</span>
+			<div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">
+		    	<span id="spendingPer"></span>
 		  	</div>
 		</div>
 		
 		<div id="list">
 		
 		</div>
+		</c:if> <!-- c:if test="${budget ne null }" end -->
 	</div>
 </body>
 </html>

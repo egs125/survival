@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+#body {
+	text-align : center;
+	padding : 5%;
+}
+
+#goal {
+	display : block;
+	text-align : left;
+	height : 100px;
+	width : 100%;
+}
+
+#spendingBar {
+	display : block;
+	
+}
+
+#resetBtn {
+	border : none;
+	background-color : white;
+
+}
+
+#changeAmt {
+	display : none;
+	z-index : 999999;
+	height : auto;
+	width : 300px;
+	background-color : #fffedf;
+}
+
+input {
+	text-align : right;
+}
+
+#list {
+	display : block;
+}
