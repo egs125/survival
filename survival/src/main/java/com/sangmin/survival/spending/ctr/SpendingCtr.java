@@ -1,5 +1,6 @@
 package com.sangmin.survival.spending.ctr;
 
+import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sangmin.survival.spending.svc.SpendingSvc;
 import com.sangmin.survival.spending.vo.BudgetVO;
+import com.sangmin.survival.spending.vo.SpendingVO;
 import com.sangmin.survival.user.vo.UserVO;
 
 @RequestMapping("/spending")
@@ -24,8 +26,13 @@ public class SpendingCtr {
 	
 	@RequestMapping("/dailySpending")
 	public String dailySpending(HttpSession session, Model model) throws Exception {
-		BudgetVO vo = svc.selectBudget(((UserVO) session.getAttribute("loginUser")).getId());
-		session.setAttribute("budget", vo);
+		String id = ((UserVO) session.getAttribute("loginUser")).getId();
+		BudgetVO budget = svc.retrieveBudget(id);
+		if(null != budget) {
+			List<SpendingVO> list = svc.retrieveSpendingList(id);
+			budget.setSpendingList(list);
+		}
+		session.setAttribute("budget", budget);
 		return "/spending/dailySpending";
 	}
 	

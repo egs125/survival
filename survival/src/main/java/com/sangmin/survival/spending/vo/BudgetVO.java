@@ -11,6 +11,7 @@ public class BudgetVO implements Serializable{
 	private String monthlyBudget;
 	private String yearlyBudget;
 	private List<SpendingVO> spendingList;
+	private String totalAmt;
 		
 	public String getId() {
 		return id;
@@ -60,10 +61,18 @@ public class BudgetVO implements Serializable{
 		this.spendingList = spendingList;
 	}
 
+	public String getTotalAmt() {
+		return totalAmt;
+	}
+
+	public void setTotalAmt(String totalAmt) {
+		this.totalAmt = totalAmt;
+	}
+
 	public BudgetVO () {}
-	
+
 	public BudgetVO(String id, String dailyBudget, String weeklyBudget, String monthlyBudget, String yearlyBudget,
-			List<SpendingVO> spendingList) {
+			List<SpendingVO> spendingList, String totalAmt) {
 		super();
 		this.id = id;
 		this.dailyBudget = dailyBudget;
@@ -71,6 +80,7 @@ public class BudgetVO implements Serializable{
 		this.monthlyBudget = monthlyBudget;
 		this.yearlyBudget = yearlyBudget;
 		this.spendingList = spendingList;
+		this.totalAmt = totalAmt;
 	}
 
 	@Override

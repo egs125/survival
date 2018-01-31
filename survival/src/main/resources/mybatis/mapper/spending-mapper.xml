@@ -11,14 +11,34 @@
 		<result property="yearlyBudget" column="yearly_budget" />
   	</resultMap>
   	
+  	<resultMap id="spending" type="spending">
+  		<id property="id" column="id" />
+  		<result property="category" column="category" />
+		<result property="operator" column="operator" />
+		<result property="amount" column="amount" />
+		<result property="date" column="date" />
+		<result property="memo" column="memo" />
+  	</resultMap>
+  	
   	<!-- 예산 정보 조회 -->
-  	<select id="selectBudget" parameterType="java.lang.String" resultType="budget">
+  	<select id="retrieveBudget" parameterType="java.lang.String" resultType="budget">
   		SELECT DAILY_BUDGET,
   			   WEEKLY_BUDGET,
   			   MONTHLY_BUDGET,
   			   YEARLY_BUDGET
   		  FROM BUDGET
   		 WHERE ID = #{id} 
+  	</select>
+  	
+  	<!-- 소비내역 조회 -->
+  	<select id="retrieveSpendingList" parameterType="java.lang.String" resultType="spending">
+  		SELECT CATEGORY,
+  			   OPERATOR,
+  			   AMOUNT,
+  			   DATE,
+  			   MEMO
+  		  FROM SPENDING
+  		 WHERE ID = #{id}  			   
   	</select>
   	
   	<!-- 일일 예산 세팅 -->
