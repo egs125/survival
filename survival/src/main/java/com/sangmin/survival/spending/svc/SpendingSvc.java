@@ -14,4 +14,6 @@ public interface SpendingSvc {
 
 	List<SpendingVO> retrieveSpendingList(String id);
 
+	int setBudget(Map<String, Object> params);
+
 }

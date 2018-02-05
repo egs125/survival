@@ -3,7 +3,6 @@
  */
 $(function(){
 	
-	
 	setProgressBar();
 	
 	$('#setBtn').on('click', function(){
@@ -16,7 +15,7 @@ $(function(){
 		$('#changeAmt').attr('style', 'display:block;');
 	});
 	
-	$('#saveBtn').on('click', function(){
+	$('#changeSaveBtn').on('click', function(){
 		resetBudget();
 	});
 	
@@ -25,13 +24,19 @@ $(function(){
 		$('#list').attr('style', 'margin-top:0px;');
 		$('#changeAmt').attr('style', 'display:none;');
 	});
+	
+	$('#spendSaveBtn').on('click', function(){
+		
+	});
 });
 
 function setProgressBar(){
 	
-	var percent = "50%";
+	var budget =  $("#dailyBudget").val();
+	var spending = $("#totalSpending").val();
+	var percent = Math.round(spending / budget * 100);
 	$('#spendingBar > div').attr('style', 'width:' + percent);
-	$('#spendingPer').text(percent);
+	$('#spendingPer').text(percent + "%");
 }
 
 function setNewBudget(){
@@ -42,6 +47,8 @@ function setNewBudget(){
 		return false;
 	}
 	
+	setBudget(budget);
+	/*
 	var form = $('<form></form>');
 	form.attr('action', 'setNewBudget');
 	form.attr('method', 'post');
@@ -50,11 +57,43 @@ function setNewBudget(){
 	form.appendTo('body');
 	form.append(el);
 	form.submit();
+	$('body').removeChild(form);*/
 }
 
 
 function resetBudget(){
 	
+	var budget = $('#newBudgetAmt').val();
+	if(budget == null || budget == ''){
+		alert("예산금액을 설정해주세요!");
+		return false;
+	}
 	
-	$('#changeAmt').attr('style', 'display:none;');
+	setBudget(budget);
+}
+
+function setBudget(budget){
+	
+	var param = {"budget" : budget};
+	
+	$.ajax({
+		url  : "setBudget",
+		type : "post",
+		data : param,
+		dataType : "json",
+		async: true,
+		success : function(data){
+			console.log("success");
+			console.log(data);
+		},
+		error : function(){
+			console.log("error");
+		},
+		complete : function(data){
+			console.log(data);
+			$('#spendingBar').attr('style', 'margin-top:0px;');
+			$('#list').attr('style', 'margin-top:0px;');
+			$('#changeAmt').attr('style', 'display:none;');
+		}
+	});
 }

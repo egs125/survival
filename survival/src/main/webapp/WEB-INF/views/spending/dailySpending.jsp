@@ -37,17 +37,19 @@
 			</div>	
 		</c:if>
 		<c:if test="${budget.dailyBudget ne null }">
-			<h2>오늘 예산  ${budget.dailyBudget} 중  원 사용 </h2>	
+			<h2>오늘 예산  ${budget.dailyBudget}원 중   ${budget.totalAmt}원 사용 </h2>
+			<input id="dailyBudget" type="hidden" value="${budget.dailyBudget}"/>
+			<input id="totalSpending" type="hidden" value="  ${budget.totalAmt}"/>
 			<button id="resetBtn">
 				<span class="glyphicon glyphicon-cog"></span> 일일 예산 재설정
 			</button>
 	
   			<div id="changeAmt">
-				현재 예산액  <input type="text" id="curBudgetAmt" readonly />
+				현재 예산액  <input type="text" id="curBudgetAmt" value="${budget.dailyBudget}" readonly />
 				<br>
 				수정 예산액  <input type="number" id="newBudgetAmt" />
 				<br><br>
-				<button id="saveBtn">Save</button> &nbsp;&nbsp; <button id="cancelBtn">Cancel</button>
+				<button id="changeSaveBtn">Save</button> &nbsp;&nbsp; <button id="cancelBtn">Cancel</button>
 				<br>		
 			</div>				
 		</div> <!-- end of div goal -->
@@ -59,7 +61,30 @@
 		</div>
 		
 		<div id="list">
-		
+			<c:if test="${budget.spendingList ne null }">
+				<div class="panel panel-default">
+				<button id="spendSaveBtn">Save</button>	
+				<table class="table">
+					<tr><th>category</th><th>amount</th><th>date</th><th>memo</th><th>Delete</th></tr>
+					<c:forEach var="list" items="${budget.spendingList}">
+					<tr>
+						<td><input name="category" type="text" value="${list.category}" /></td>
+						<td><input name="amount" type="number" value="${list.amount}" /></td>
+						<td><input name="date" type="date" value="${list.date}" /></td>
+						<td><input name="memo" type="text" value="${list.memo}" /></td>
+						<td><input type="button" value=""></td>
+					</tr>	
+					</c:forEach>
+					<tr>
+						<td><input name="category" type="text" /></td>
+						<td><input name="amount" type="number" /></td>
+						<td><input name="date" type="date" /></td>
+						<td><input name="memo" type="text" /></td>
+						<td><input type="button" value=""></td>
+					</tr>
+				</table>
+				</div>
+			</c:if>
 		</div>
 		</c:if> <!-- c:if test="${budget ne null }" end -->
 	</div>

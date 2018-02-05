@@ -6,12 +6,12 @@ import java.util.List;
 public class BudgetVO implements Serializable{
 
 	private String id;
-	private String dailyBudget;
-	private String weeklyBudget;
-	private String monthlyBudget;
-	private String yearlyBudget;
+	private int daily_budget;
+	private int weekly_budget;
+	private int monthly_budget;
+	private int yearl_budget;
 	private List<SpendingVO> spendingList;
-	private String totalAmt;
+	private int totalAmt;
 		
 	public String getId() {
 		return id;
@@ -21,36 +21,36 @@ public class BudgetVO implements Serializable{
 		this.id = id;
 	}
 
-	public String getDailyBudget() {
-		return dailyBudget;
+	public int getDailyBudget() {
+		return daily_budget;
 	}
 
-	public void setDailyBudget(String dailyBudget) {
-		this.dailyBudget = dailyBudget;
+	public void setDailyBudget(int dailyBudget) {
+		this.daily_budget = dailyBudget;
 	}
 
-	public String getWeeklyBudget() {
-		return weeklyBudget;
+	public int getWeeklyBudget() {
+		return weekly_budget;
 	}
 
-	public void setWeeklyBudget(String weeklyBudget) {
-		this.weeklyBudget = weeklyBudget;
+	public void setWeeklyBudget(int weeklyBudget) {
+		this.weekly_budget = weeklyBudget;
 	}
 
-	public String getMonthlyBudget() {
-		return monthlyBudget;
+	public int getMonthlyBudget() {
+		return monthly_budget;
 	}
 
-	public void setMonthlyBudget(String monthlyBudget) {
-		this.monthlyBudget = monthlyBudget;
+	public void setMonthlyBudget(int monthlyBudget) {
+		this.monthly_budget = monthlyBudget;
 	}
 
-	public String getYearlyBudget() {
-		return yearlyBudget;
+	public int getYearlyBudget() {
+		return yearl_budget;
 	}
 
-	public void setYearlyBudget(String yearlyBudget) {
-		this.yearlyBudget = yearlyBudget;
+	public void setYearlyBudget(int yearlyBudget) {
+		this.yearl_budget = yearlyBudget;
 	}	
 
 	public List<SpendingVO> getSpendingList() {
@@ -61,24 +61,24 @@ public class BudgetVO implements Serializable{
 		this.spendingList = spendingList;
 	}
 
-	public String getTotalAmt() {
+	public int getTotalAmt() {
 		return totalAmt;
 	}
 
-	public void setTotalAmt(String totalAmt) {
+	public void setTotalAmt(int totalAmt) {
 		this.totalAmt = totalAmt;
 	}
 
 	public BudgetVO () {}
 
-	public BudgetVO(String id, String dailyBudget, String weeklyBudget, String monthlyBudget, String yearlyBudget,
-			List<SpendingVO> spendingList, String totalAmt) {
+	public BudgetVO(String id, int dailyBudget, int weeklyBudget, int monthlyBudget, int yearlyBudget,
+			List<SpendingVO> spendingList, int totalAmt) {
 		super();
 		this.id = id;
-		this.dailyBudget = dailyBudget;
-		this.weeklyBudget = weeklyBudget;
-		this.monthlyBudget = monthlyBudget;
-		this.yearlyBudget = yearlyBudget;
+		this.daily_budget = dailyBudget;
+		this.weekly_budget = weeklyBudget;
+		this.monthly_budget = monthlyBudget;
+		this.yearl_budget = yearlyBudget;
 		this.spendingList = spendingList;
 		this.totalAmt = totalAmt;
 	}

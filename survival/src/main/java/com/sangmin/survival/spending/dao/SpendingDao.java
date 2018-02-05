@@ -30,5 +30,9 @@ public class SpendingDao {
 		return sql.selectList(NAMESPACE + "retrieveSpendingList", id);
 	}
 
+	public int setBudget(Map<String, Object> params) {
+		return sql.insert(NAMESPACE + "setBudget", params);
+	}
+
 	
 }

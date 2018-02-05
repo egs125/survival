@@ -31,5 +31,10 @@ public class SpendingSvcImpl implements SpendingSvc{
 		return dao.retrieveSpendingList(id);
 	}
 
+	@Override
+	public int setBudget(Map<String, Object> params) {
+		return dao.setBudget(params);
+	}
+
 	
 }

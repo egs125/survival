@@ -7,7 +7,7 @@ public class SpendingVO implements Serializable{
 	private String id;
 	private String category;	//분류
 	private String operator;	//마이너스, 플러스 여부
-	private String amount;		//액수
+	private int amount;		//액수
 	private String date;		//발생일자
 	private String memo;		//비고
 	
@@ -29,10 +29,10 @@ public class SpendingVO implements Serializable{
 	public void setOperator(String operator) {
 		this.operator = operator;
 	}
-	public String getAmount() {
+	public int getAmount() {
 		return amount;
 	}
-	public void setAmount(String amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 	public String getDate() {
@@ -50,7 +50,7 @@ public class SpendingVO implements Serializable{
 	
 	public SpendingVO() {}
 	
-	public SpendingVO(String id, String category, String operator, String amount, String date, String memo) {
+	public SpendingVO(String id, String category, String operator, int amount, String date, String memo) {
 		super();
 		this.id = id;
 		this.category = category;

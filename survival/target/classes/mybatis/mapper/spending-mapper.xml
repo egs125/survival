@@ -5,10 +5,10 @@
   <mapper namespace="spendingMapper">
   	<resultMap id="budget" type="budget">
   		<id property="id" column="id" />
-		<result property="dailyBudget" column="daily_budget" />
-		<result property="weeklyBudget" column="weekly_budget" />
-		<result property="monthlyBudget" column="monthly_budget" />
-		<result property="yearlyBudget" column="yearly_budget" />
+		<result property="daily_budget" column="daily_budget" />
+		<result property="weekly_budget" column="weekly_budget" />
+		<result property="monthly_budget" column="monthly_budget" />
+		<result property="yearly_budget" column="yearly_budget" />
   	</resultMap>
   	
   	<resultMap id="spending" type="spending">
@@ -51,6 +51,22 @@
   			#{budget}
   		)
   	</insert>
+  	
+  	<!-- 일일 예산 세팅 -->
+  	<insert id="setBudget" parameterType="map">
+			
+		INSERT INTO BUDGET
+  		(ID, DAILY_BUDGET)
+		VALUES
+		(
+			#{id},
+			#{budget}
+		)
+		ON DUPLICATE KEY
+		
+		UPDATE
+		DAILY_BUDGET = #{budget}
+	</insert>
   	<!-- 총 게시물 수 조회
   	<select id="getTotalCount" resultType="int">
   		SELECT COUNT(*)
